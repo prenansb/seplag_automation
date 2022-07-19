@@ -6,7 +6,7 @@ import {
   getSheetPersons,
   receiveSheet,
   sendPersonsToSeplagAPI,
-} from '.'
+} from "."
 
 export async function sendData(file, id, dispatch) {
   const page = await receiveSheet(file)
@@ -15,7 +15,7 @@ export async function sendData(file, id, dispatch) {
   const seplagPersonsData = await getSeplagPersons(id, sheetLineEnd)
   const newPersonsData = getNewPersons(seplagPersonsData, sheetPersonsData)
   const personsSeparated = getPersonsSeparated(newPersonsData, 10)
-  dispatch({ type: 'persons_length', payload: personsSeparated.length })
+  dispatch({ type: "persons_length", payload: personsSeparated.length })
 
   await sendPersonsToSeplagAPI(personsSeparated, dispatch)
 }
